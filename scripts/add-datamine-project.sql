@@ -1,0 +1,77 @@
+-- Add DataMine Google Calendar Integration project
+INSERT INTO public.projects (
+  id,
+  title,
+  subtitle,
+  description,
+  full_description,
+  image_url,
+  project_type,
+  category,
+  timeline,
+  team,
+  role,
+  date_completed,
+  tags,
+  challenges,
+  approach,
+  outcomes,
+  created_at,
+  updated_at
+) VALUES (
+  'datamine-calendar-integration',
+  'Automated Investor Meeting Tracking System',
+  'Google Calendar Integration with AI-Powered Meeting Detection',
+  'Developed a comprehensive Google Calendar integration system that automates investor meeting tracking and eliminates manual data entry in fundraising pipelines. The system automatically syncs calendar events, uses Vertex AI to identify investor meetings, extracts structured data, and automatically creates investor records from prospect meetings.',
+  'Developed a comprehensive Google Calendar integration system that automates investor meeting tracking and eliminates manual data entry in fundraising pipelines. The system automatically syncs calendar events from Google Calendar, uses Vertex AI to identify investor meetings, extracts structured data (attendees, locations, meeting types), and automatically creates investor records from prospect meetings. The integration intelligently links calendar events to existing investor pipeline records using domain matching and fuzzy name matching algorithms, providing real-time visibility into all investor interactions with zero manual effort required from founders.',
+  '/placeholder.svg?height=400&width=600',
+  'project',
+  'Research & Development',
+  '3 months (Jan 2024 - May 2024)',
+  'Founder, 3 graduate students',
+  'Product Engineer - Graduate Researcher',
+  '2024-05-01',
+  ARRAY[
+    'Python',
+    'FastAPI',
+    'SQLAlchemy',
+    'PostgreSQL',
+    'OAuth 2.0',
+    'Google Calendar API',
+    'Vertex AI',
+    'AI/ML',
+    'Natural Language Processing',
+    'RESTful APIs',
+    'Background Jobs',
+    'APScheduler',
+    'Database Design',
+    'System Architecture',
+    'Entity Resolution',
+    'Fuzzy Matching'
+  ],
+  ARRAY[
+    'Google Calendar API Integration: Building a robust integration with Google Calendar API that handles OAuth 2.0 authentication via Nango proxy, manages token refresh, fetches events from multiple calendars, handles pagination and rate limiting, and processes high volumes of calendar events efficiently',
+    'AI-Powered Meeting Detection: Implementing an intelligent system using Vertex AI to analyze calendar events and accurately identify investor meetings from generic calendar entries, extracting structured data (investor company names, domains, meeting types) with high confidence scores while avoiding false positives',
+    'Intelligent Entity Resolution: Creating a multi-tier matching algorithm that maps calendar events to existing investor records using domain matching, fuzzy name matching, and contact email matching, while handling edge cases like multiple investors in one meeting, recurring meetings, and prospect investors',
+    'Automated Prospect Creation: Designing a system that automatically creates investor records from calendar events when new investor firms are detected, with proper investor type classification (VC, accelerator, angel, etc.) and pending approval workflow for user review',
+    'Event Deduplication & Data Pipeline: Implementing logic to prevent duplicate interactions by linking calendar events with email invitations, handling event updates and cancellations, and moving identified investor meetings from raw calendar data to structured interaction records',
+    'Background Job Orchestration: Building a scalable background job system that runs calendar sync and AI analysis jobs automatically, handles rate limits, manages batch processing, and ensures reliable execution with error handling and retry logic'
+  ],
+  ARRAY[
+    'Backend Architecture (FastAPI + PostgreSQL): Built a comprehensive GCalService class that handles all Google Calendar operations including OAuth token management, multi-calendar event fetching with configurable date ranges (30 days back, 90 days forward), event pagination and rate limiting, event deduplication, fundraising event classification using Vertex AI, and background sync orchestration with error handling',
+    'Calendar AI Analysis Job: Implemented a background job that processes calendar events, uses Vertex AI to analyze each event for investor meeting detection, extracts structured data (investor company, domain, meeting type, stage progression), creates prospect investors automatically when new firms are detected, and maps events to existing investors using multi-tier matching algorithm',
+    'RESTful API Endpoints: Built comprehensive API endpoints for calendar integration including connection status and sync statistics, manual sync triggers (background and immediate execution), event retrieval by investor firm, domain, or date range, and investor firm grouping with event counts',
+    'Database Schema Design: Designed calendar_interactions table with 20+ fields including event metadata (event_id, title, description, attendees, location, start/end times), AI analysis results (is_investor_meeting, meeting_type, confidence_score, key_phrases, stage_progression), investor mapping fields, prospect data (JSONB field), sync tracking, and deduplication (linked_email_id for email-calendar linking)',
+    'Key Features Implemented: OAuth Integration with Google Calendar OAuth 2.0 via Nango proxy; Calendar Sync Service that fetches events from multiple calendars; AI-Powered Analysis Pipeline using Vertex AI (Gemini) to classify investor meetings; Intelligent Investor Mapping with multi-tier domain matching algorithm; Event-to-Interaction Pipeline with deduplication logic; and configurable filtering capabilities for fundraising-related events'
+  ],
+  ARRAY[
+    'Zero-Touch Calendar Automation: Implemented fully automated Google Calendar integration that syncs events, identifies investor meetings using AI, creates investor records automatically, and links meetings to fundraising pipeline—requiring zero manual effort from founders after initial connection. This eliminated hours of manual meeting logging and improved fundraising visibility by 100%',
+    'AI-Powered Meeting Detection: Deployed Vertex AI-based calendar event analysis that accurately identifies investor meetings with high confidence scores, extracts structured data (investor company names, domains, meeting types, stage progression), and automatically classifies meeting types (intro calls, pitch meetings, diligence, partner meetings)',
+    'Automated Prospect Creation: Built intelligent system that automatically creates investor records from calendar events when new investor firms are detected, with proper investor type classification (VC, accelerator, angel, venture studio, family office, etc.) and pending approval workflow for user review',
+    'Intelligent Entity Resolution: Implemented multi-tier matching algorithm that successfully maps calendar events to existing investor records using contact email matching (highest priority), domain matching, and fuzzy name matching, handling edge cases like multiple investors per meeting and recurring meetings',
+    'Scalable Background Processing: Created reliable background job system that processes calendar syncs and AI analysis automatically, handling rate limits, batch processing, and error recovery for multiple organizations simultaneously',
+    'Production-Ready Integration: Successfully deployed Google Calendar integration to staging and production environments with comprehensive API endpoints, database migrations, error handling, and monitoring capabilities'
+  ],
+  NOW(),
+  NOW()
+);
